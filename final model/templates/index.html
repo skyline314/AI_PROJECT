@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Sistem Deteksi Kantuk</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('home') }}" class="navbar-brand">
+                <i class="fa-solid fa-car-on"></i>
+                Driver Drowsiness Detector
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                <li><a href="{{ url_for('detector') }}">Detector</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="video-wrapper">
+            <div class="header-controls">
+                <h1><i class="fa-solid fa-car-on"></i> Driver Drowsiness Detector</h1>
+                <div class="control-buttons">
+                    <button id="btn-start"><i class="fa-solid fa-play"></i> Start Deteksi</button>
+                    <button id="btn-pause" class="disabled"><i class="fa-solid fa-pause"></i> Pause Deteksi</button>
+                </div>
+            </div>
+            <div class="video-container">
+                <img src="{{ url_for('video_feed') }}">
+                <div id="alert-banner">PERINGATAN KANTUK! <br /><span id="alert-reason" class="reason"></span></div>
+            </div>
+        </div>
+        <div class="status-dashboard">
+            <div class="status-card">
+                <h2><i class="fa-solid fa-eye"></i> Status Mata</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="label">Mata Kiri</span>
+                        <span class="value" id="left-eye-status">N/A</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Mata Kanan</span>
+                        <span class="value" id="right-eye-status">N/A</span>
+                    </div>
+                </div>
+            </div>
+            <div class="status-card">
+                <h2><i class="fa-solid fa-face-meh-blank"></i> Status Mulut</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="label">Kondisi</span>
+                        <span class="value" id="yawn-status">PAUSED</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">MAR Value</span>
+                        <span class="value" id="mar-value">0.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="status-card head-pose-card">
+                <h2><i class="fa-solid fa-brain"></i> Posisi Kepala</h2>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="label">Pitch</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="pitch-bar"></div>
+                        </div><span class="value" id="pitch-value">0.0°</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Yaw</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="yaw-bar"></div>
+                        </div>
+                        <span class="value" id="yaw-value">0.0°</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Roll</span>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="roll-bar"></div>
+                        </div>
+                        <span class="value" id="roll-value">0.0°</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="alarm-sound" src="{{ url_for('static', filename='alarm.mp3') }}" preload="auto"></audio>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
