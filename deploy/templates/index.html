@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-time Drowsiness Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Real-time Drowsiness Detection</h1>
+    <div class="container">
+        <div id="video-container">
+            <video id="webcam" autoplay playsinline></video>
+            <canvas id="overlay"></canvas>
+        </div>
+        <div id="status-panel">
+            <h2>Detection Status</h2>
+            <p><strong>Left Eye:</strong> <span id="left-eye-status">N/A</span></p>
+            <p><strong>Right Eye:</strong> <span id="right-eye-status">N/A</span></p>
+            <p><strong>Yawn Status:</strong> <span id="yawn-status">NORMAL</span></p>
+            <p><strong>Pitch:</strong> <span id="pitch-status">0.0</span></p>
+            <p><strong>Yaw:</strong> <span id="yaw-status">0.0</span></p>
+            <p><strong>Roll:</strong> <span id="roll-status">0.0</span></p>
+            <div id="alert-box" class="alert-off">NO ALERT</div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

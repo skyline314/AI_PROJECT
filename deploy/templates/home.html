@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang - Driver Drowsiness Detector</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="{{ url_for('home') }}" class="navbar-brand">
+                <i class="fa-solid fa-car-on"></i>
+                Driver Drowsiness Detector
+            </a>
+            <ul class="navbar-menu">
+                <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                <li><a href="{{ url_for('detector') }}">Detector</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Driver Drowsiness Detector</h1>
+            <p class="hero-subtitle">Teknologi Cerdas untuk Keselamatan Anda di Jalan</p>
+            <a href="{{ url_for('detector') }}" class="cta-button">
+                Mulai Deteksi <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </header>
+
+    <section class="features">
+        <h2 class="section-title">Teknologi di Balik Sistem</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-eye"></i></div>
+                <h3 class="feature-title">Deteksi Mata (CNN)</h3>
+                <p class="feature-description">
+                    Menggunakan model Convolutional Neural Network (CNN) untuk secara akurat membedakan antara mata terbuka dan tertutup, bahkan dalam kondisi cahaya yang bervariasi.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                <h3 class="feature-title">Analisis Posisi Kepala (XGBoost)</h3>
+                <p class="feature-description">
+                    Model XGBoost menganalisis 468 titik landmark wajah untuk menghitung rotasi kepala (Pitch, Yaw, Roll) dan mendeteksi saat kepala terkulai sebagai indikator utama kantuk.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fa-solid fa-face-meh-blank"></i></div>
+                <h3 class="feature-title">Deteksi Menguap (SVM)</h3>
+                <p class="feature-description">
+                    Dengan Support Vector Machine (SVM), sistem memonitor rasio bukaan mulut (MAR) dari waktu ke waktu untuk mengidentifikasi pola menguap secara andal.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Drowsiness Detection Project. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
